@@ -1,11 +1,23 @@
-const myScores = [
-  { name: 'Name', scores: 20 },
-  { name: 'Name', scores: 20 },
-  { name: 'Name', scores: 20 },
-  { name: 'Name', scores: 20 },
-  { name: 'Name', scores: 20 },
-];
-const scores = () => {
+import getScores from './request';
+// const myScores = [
+//   { user: 'Name', score: 20 },
+//   { user: 'Name', score: 20 },
+//   { user: 'Name', score: 20 },
+//   { user: 'Name', score: 20 },
+//   { user: 'Name', score: 20 },
+// ];
+// const bu =
+
+// async function getResult() {
+//   const data = await getScores()
+//       console.log("daatata", data)
+
+// }
+// console.log("returned",getResult())
+
+// let myScores = getResult()
+async function scores() {
+  const myScores = await getScores();
   const res = document.createElement('div');
   res.classList.add('col-5');
 
@@ -24,12 +36,12 @@ const scores = () => {
 
   const tBody = document.createElement('tbody');
 
-  myScores.forEach((score) => {
+  myScores.result.forEach((myScore) => {
     const tRow = document.createElement('tr');
     const scoreName = document.createElement('td');
     const scoreValue = document.createElement('td');
-    scoreName.innerText = score.name;
-    scoreValue.innerText = score.scores;
+    scoreName.innerText = myScore.user;
+    scoreValue.innerText = myScore.score;
 
     tRow.appendChild(scoreName);
     tRow.appendChild(scoreValue);
@@ -46,6 +58,6 @@ const scores = () => {
   res.appendChild(table);
 
   return res;
-};
+}
 
 export default scores;
