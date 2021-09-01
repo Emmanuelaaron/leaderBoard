@@ -18,4 +18,11 @@ async function getScores() {
   return list;
 }
 
-export default getScores;
+const scoreAddition = (nameInput, scoreInput) => {
+  const params = `user=${nameInput}&score=${scoreInput}`;
+  request.open('POST', requestURL, true);
+  request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  request.send(params);
+};
+
+export { getScores, scoreAddition };

@@ -1,10 +1,15 @@
-import getScores from './request';
-import display from './index';
+/* eslint-disable import/no-cycle */
+
+import { getScores } from './request';
+import display from './bodyComponent';
 
 async function scores() {
   const myScores = await getScores();
   const res = document.createElement('div');
   res.classList.add('col-5');
+
+  const tableDiv = document.createElement('div');
+  tableDiv.classList.add('table-responsive');
 
   const header = document.createElement('div');
   header.classList.add('d-flex', 'justify-content-between');
@@ -41,11 +46,13 @@ async function scores() {
 
   table.appendChild(tBody);
 
+  tableDiv.appendChild(table);
+
   header.appendChild(heading);
   header.appendChild(refreshBtn);
 
   res.appendChild(header);
-  res.appendChild(table);
+  res.appendChild(tableDiv);
 
   return res;
 }
