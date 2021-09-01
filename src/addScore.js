@@ -1,3 +1,7 @@
+/* eslint-disable import/no-cycle */
+
+import { scoreAddition } from './request';
+
 const addScore = () => {
   const res = document.createElement('div');
   const heading = document.createElement('h3');
@@ -25,6 +29,12 @@ const addScore = () => {
   submitInput.type = 'submit';
   submitInput.value = 'Submit';
   submitInput.classList.add('submit', 'btn', 'btn-success', 'btn-lg');
+  submitInput.addEventListener('click', (e) => {
+    e.preventDefault();
+    scoreAddition(nameInput.value, scoreInput.value);
+    nameInput.value = '';
+    scoreInput.value = '';
+  });
 
   const myBr = document.createElement('br');
   const myBr1 = document.createElement('br');
