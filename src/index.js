@@ -25,3 +25,5 @@ async function display() {
 }
 
 display();
+
+export default display;

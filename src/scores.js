@@ -1,21 +1,6 @@
 import getScores from './request';
-// const myScores = [
-//   { user: 'Name', score: 20 },
-//   { user: 'Name', score: 20 },
-//   { user: 'Name', score: 20 },
-//   { user: 'Name', score: 20 },
-//   { user: 'Name', score: 20 },
-// ];
-// const bu =
+import display from './index';
 
-// async function getResult() {
-//   const data = await getScores()
-//       console.log("daatata", data)
-
-// }
-// console.log("returned",getResult())
-
-// let myScores = getResult()
 async function scores() {
   const myScores = await getScores();
   const res = document.createElement('div');
@@ -30,6 +15,11 @@ async function scores() {
   const refreshBtn = document.createElement('button');
   refreshBtn.innerText = 'Refresh';
   refreshBtn.classList.add('btn', 'btn-secondary');
+
+  refreshBtn.addEventListener('click', () => {
+    document.body.innerHTML = '';
+    display();
+  });
 
   const table = document.createElement('table');
   table.classList.add('table', 'table-striped', 'mt-5', 'table-hover', 'border', 'border-dark', 'border-4', 'table-borderless');
