@@ -1,7 +1,13 @@
+/* eslint-disable import/no-cycle */
+
+import { scoreAddition } from './request';
+
 const addScore = () => {
   const res = document.createElement('div');
   const heading = document.createElement('h3');
   heading.innerText = 'Add your Score';
+
+  const scoreSuccess = document.createElement('h5');
 
   const form = document.createElement('form');
   form.classList.add('mt-5');
@@ -15,6 +21,7 @@ const addScore = () => {
   const scoreInput = document.createElement('input');
   scoreInput.placeholder = 'Your Score';
   scoreInput.required = true;
+  scoreInput.type = 'number';
   scoreInput.id = 'score';
   scoreInput.classList.add('form-control');
 
@@ -25,6 +32,21 @@ const addScore = () => {
   submitInput.type = 'submit';
   submitInput.value = 'Submit';
   submitInput.classList.add('submit', 'btn', 'btn-success', 'btn-lg');
+  submitInput.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const res = await scoreAddition(nameInput.value, scoreInput.value);
+    nameInput.value = '';
+    scoreInput.value = '';
+    if (res.result === 'Leaderboard score created correctly.') {
+      scoreSuccess.innerHTML = res.result;
+      scoreSuccess.classList.remove('text-danger');
+      scoreSuccess.classList.add('text-success');
+    } else {
+      scoreSuccess.innerHTML = res.message;
+      scoreSuccess.classList.remove('text-success');
+      scoreSuccess.classList.add('text-danger');
+    }
+  });
 
   const myBr = document.createElement('br');
   const myBr1 = document.createElement('br');
@@ -38,6 +60,7 @@ const addScore = () => {
   form.appendChild(submitDiv);
 
   res.appendChild(heading);
+  res.appendChild(scoreSuccess);
   res.appendChild(form);
 
   return res;

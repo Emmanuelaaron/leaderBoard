@@ -1,13 +1,15 @@
-const myScores = [
-  { name: 'Name', scores: 20 },
-  { name: 'Name', scores: 20 },
-  { name: 'Name', scores: 20 },
-  { name: 'Name', scores: 20 },
-  { name: 'Name', scores: 20 },
-];
-const scores = () => {
+/* eslint-disable import/no-cycle */
+
+import { getScores } from './request';
+import display from './bodyComponent';
+
+const scores = async () => {
+  const myScores = await getScores();
   const res = document.createElement('div');
   res.classList.add('col-5');
+
+  const tableDiv = document.createElement('div');
+  tableDiv.classList.add('table-responsive');
 
   const header = document.createElement('div');
   header.classList.add('d-flex', 'justify-content-between');
@@ -19,17 +21,22 @@ const scores = () => {
   refreshBtn.innerText = 'Refresh';
   refreshBtn.classList.add('btn', 'btn-secondary');
 
+  refreshBtn.addEventListener('click', () => {
+    document.body.innerHTML = '';
+    display();
+  });
+
   const table = document.createElement('table');
   table.classList.add('table', 'table-striped', 'mt-5', 'table-hover', 'border', 'border-dark', 'border-4', 'table-borderless');
 
   const tBody = document.createElement('tbody');
 
-  myScores.forEach((score) => {
+  myScores.result.forEach((myScore) => {
     const tRow = document.createElement('tr');
     const scoreName = document.createElement('td');
     const scoreValue = document.createElement('td');
-    scoreName.innerText = score.name;
-    scoreValue.innerText = score.scores;
+    scoreName.innerText = myScore.user;
+    scoreValue.innerText = myScore.score;
 
     tRow.appendChild(scoreName);
     tRow.appendChild(scoreValue);
@@ -39,11 +46,13 @@ const scores = () => {
 
   table.appendChild(tBody);
 
+  tableDiv.appendChild(table);
+
   header.appendChild(heading);
   header.appendChild(refreshBtn);
 
   res.appendChild(header);
-  res.appendChild(table);
+  res.appendChild(tableDiv);
 
   return res;
 };
