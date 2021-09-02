@@ -31,7 +31,7 @@ const addScore = () => {
   const submitInput = document.createElement('input');
   submitInput.type = 'submit';
   submitInput.value = 'Submit';
-  submitInput.classList.add('submit', 'btn', 'btn-success', 'btn-lg');
+  submitInput.classList.add('submit', 'btn', 'btn-success', 'btn-sm');
   submitInput.addEventListener('click', async (e) => {
     e.preventDefault();
     const res = await scoreAddition(nameInput.value, scoreInput.value);
