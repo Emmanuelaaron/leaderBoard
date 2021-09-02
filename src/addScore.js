@@ -21,6 +21,7 @@ const addScore = () => {
   const scoreInput = document.createElement('input');
   scoreInput.placeholder = 'Your Score';
   scoreInput.required = true;
+  scoreInput.type = 'number';
   scoreInput.id = 'score';
   scoreInput.classList.add('form-control');
 
