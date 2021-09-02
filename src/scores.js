@@ -3,7 +3,7 @@
 import { getScores } from './request';
 import display from './bodyComponent';
 
-async function scores() {
+const scores = async () => {
   const myScores = await getScores();
   const res = document.createElement('div');
   res.classList.add('col-5');
@@ -55,6 +55,6 @@ async function scores() {
   res.appendChild(tableDiv);
 
   return res;
-}
+};
 
 export default scores;

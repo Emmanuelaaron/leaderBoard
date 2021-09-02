@@ -3,7 +3,7 @@
 import scores from './scores';
 import addScore from './addScore';
 
-async function component() {
+const component = async () => {
   const element = document.createElement('main');
   const heading = document.createElement('h1');
   heading.classList.add('ms-5', 'mt-4', 'mb-5');
@@ -18,7 +18,7 @@ async function component() {
   element.appendChild(content);
 
   return element;
-}
+};
 
 async function display() {
   document.body.appendChild(await component());
