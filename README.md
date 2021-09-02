@@ -15,7 +15,18 @@
 
 
 ## Getting Started
-Clone this repo on your local machine
+- Open your terminal
+- cd into a directory where you want this project to be stored
+- Clone this repo on your local machine using the this command
+```git clone git@github.com:Emmanuelaaron/leaderBoard.git```
+- cd into the cloned repo using this command
+ ``` cd leaderBoard```
+- delete the package-lock.json file
+- run the commands below
+- Install all the dependencies using this command
+```npm install```
+- Run the project using this command
+```npm start```
 
 ### Prerequisites
 To make this repository working in your local machine you need only a browser.
