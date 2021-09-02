@@ -10,7 +10,7 @@ const component = async () => {
   heading.innerHTML = 'LeaderBoard';
 
   const content = document.createElement('section');
-  content.classList.add('col-12', 'container', 'd-flex', 'justify-content-around');
+  content.classList.add('col-12', 'container', 'd-flex', 'justify-content-around', 'flex-wrap-reverse');
   content.appendChild(await scores());
   content.appendChild(addScore());
 

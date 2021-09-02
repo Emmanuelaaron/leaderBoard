@@ -3,3 +3,15 @@
 body {
   background-color: rgb(230, 229, 227);
 }
+
+.tableDiv {
+  height: 200px;
+  overflow: scroll;
+}
+
+@media screen and (max-width: 759px) {
+  .scores-wraper {
+    margin-top: 51px;
+    margin-bottom: 51px;
+  }
+}

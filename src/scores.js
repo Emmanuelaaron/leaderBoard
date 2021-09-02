@@ -6,10 +6,10 @@ import display from './bodyComponent';
 const scores = async () => {
   const myScores = await getScores();
   const res = document.createElement('div');
-  res.classList.add('col-5');
+  res.classList.add('scores-wraper');
 
   const tableDiv = document.createElement('div');
-  tableDiv.classList.add('table-responsive');
+  tableDiv.classList.add('tableDiv', 'mt-5');
 
   const header = document.createElement('div');
   header.classList.add('d-flex', 'justify-content-between');
@@ -19,7 +19,7 @@ const scores = async () => {
 
   const refreshBtn = document.createElement('button');
   refreshBtn.innerText = 'Refresh';
-  refreshBtn.classList.add('btn', 'btn-secondary');
+  refreshBtn.classList.add('btn', 'btn-secondary', 'btn-sm');
 
   refreshBtn.addEventListener('click', () => {
     document.body.innerHTML = '';
@@ -27,7 +27,7 @@ const scores = async () => {
   });
 
   const table = document.createElement('table');
-  table.classList.add('table', 'table-striped', 'mt-5', 'table-hover', 'border', 'border-dark', 'border-4', 'table-borderless');
+  table.classList.add('table', 'table-striped', 'table-hover', 'border', 'border-dark', 'border-4', 'table-borderless');
 
   const tBody = document.createElement('tbody');
 
